@@ -23,16 +23,28 @@ import com.mytest.android.citiesapp.utils.NumberSeparator
 class SearchFragment : Fragment() {
 
     private lateinit var binding: FragmentSearchBinding
-
     private lateinit var searchViewModel: SearchViewModel
-
     private lateinit var adapter: SearchFragmentAdapter
-
     private var searchQuery: String? = null
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentSearchBinding.inflate(inflater, container, false)
 
+        setupAdapter()
+        searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
+        return binding.root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        showKeyBoard()
+        findCities()
+        NumberSeparator.setNewLocale()
+        observeViewModel()
+    }
+
+    private fun setupAdapter() {
         adapter = SearchFragmentAdapter()
         with(binding) {
             recyclerViewSearchFragment.adapter = adapter
@@ -42,27 +54,17 @@ class SearchFragment : Fragment() {
                 recyclerViewSearchFragment.layoutManager = GridLayoutManager(requireContext(), 2)
             }
         }
-
-        searchViewModel = ViewModelProvider(this)[SearchViewModel::class.java]
-
-        return binding.root
     }
 
-    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
-
-        showKeyBoard()
+    private fun findCities() {
         binding.searchLine.doAfterTextChanged {
             searchViewModel.findCites(binding.searchLine.text.toString().trim())
             searchQuery = binding.searchLine.text.toString().trim()
         }
-
-        NumberSeparator.setNewLocale()
-        observeViewModel()
     }
 
     private fun observeViewModel() {
-        searchViewModel.citiesList.observe(viewLifecycleOwner, { cityEntity ->
+        searchViewModel.citiesList.observe(viewLifecycleOwner) { cityEntity ->
             adapter.updateItems(cityEntity)
             if (cityEntity.isEmpty()) {
                 fadeInAnimation()
@@ -87,7 +89,7 @@ class SearchFragment : Fragment() {
             } else {
                 binding.cardView.visibility = View.GONE
             }
-        })
+        }
     }
 
     private fun showKeyBoard() {

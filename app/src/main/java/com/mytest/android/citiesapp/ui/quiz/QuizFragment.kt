@@ -16,34 +16,22 @@ import com.mytest.android.citiesapp.databinding.FragmentQuizBinding
 class QuizFragment : Fragment(), View.OnClickListener {
 
     private lateinit var quizViewModel: QuizViewModel
-
     private lateinit var binding: FragmentQuizBinding
-
     private val args: QuizFragmentArgs by navArgs()
-
     private var score: Int = QuizViewModel.START_SCORE
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentQuizBinding.inflate(inflater, container, false)
 
         quizViewModel = ViewModelProvider(this)[QuizViewModel::class.java]
-
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        quizViewModel.setQuizParameters(args.quizLevel)
-        quizViewModel.fillListsWithCities()
-        binding.firstOption.setOnClickListener(this)
-        binding.secondOption.setOnClickListener(this)
-        binding.thirdOption.setOnClickListener(this)
-        binding.fourthOption.setOnClickListener(this)
-        binding.skipButton.setOnClickListener(this)
-
-        quizViewModel.startTimer()
-
+        setupQuiz()
+        setOnClickListener()
         observeViewModel()
     }
 
@@ -52,8 +40,22 @@ class QuizFragment : Fragment(), View.OnClickListener {
         quizViewModel.endTimer()
     }
 
+    private fun setupQuiz() {
+        quizViewModel.setQuizParameters(args.quizLevel)
+        quizViewModel.fillListsWithCities()
+        quizViewModel.startTimer()
+    }
+
+    private fun setOnClickListener() {
+        binding.firstOption.setOnClickListener(this)
+        binding.secondOption.setOnClickListener(this)
+        binding.thirdOption.setOnClickListener(this)
+        binding.fourthOption.setOnClickListener(this)
+        binding.skipButton.setOnClickListener(this)
+    }
+
     private fun observeViewModel() {
-        quizViewModel.capitalQuestions.observe(viewLifecycleOwner, { capitalQuestion ->
+        quizViewModel.capitalQuestions.observe(viewLifecycleOwner) { capitalQuestion ->
             with(binding) {
                 question.text = getString(R.string.capital_question, capitalQuestion.country)
                 firstOption.text = capitalQuestion.options[ZERO_OPTION_POSITION]
@@ -61,9 +63,9 @@ class QuizFragment : Fragment(), View.OnClickListener {
                 thirdOption.text = capitalQuestion.options[SECOND_OPTION_POSITION]
                 fourthOption.text = capitalQuestion.options[THIRD_OPTION_POSITION]
             }
-        })
+        }
 
-        quizViewModel.timeToEnd.observe(viewLifecycleOwner, {
+        quizViewModel.timeToEnd.observe(viewLifecycleOwner) {
             if (it < QuizViewModel.START_SCORE) {
                 binding.timer.text = ZERO_POINTS.toString()
             } else {
@@ -71,27 +73,27 @@ class QuizFragment : Fragment(), View.OnClickListener {
                 val second = (it / TICK_TIME_FOR_CONVERT % SECONDS).toString().padStart(LENGTH_TIME, PAD_CHAR)
                 binding.timer.text = getString(R.string.convert_time, minute, second)
             }
-        })
+        }
 
-        quizViewModel.score.observe(viewLifecycleOwner, {
+        quizViewModel.score.observe(viewLifecycleOwner) {
             binding.currentScoreAmount.text = it.toString()
             score = it
-        })
+        }
 
-        quizViewModel.skipPoints.observe(viewLifecycleOwner, {
+        quizViewModel.skipPoints.observe(viewLifecycleOwner) {
             binding.skipPointsAmount.text = it.toString()
             if (it == ZERO_POINTS) {
                 binding.skipButton.visibility = View.INVISIBLE
             }
-        })
+        }
 
-        quizViewModel.isTimerEnd.observe(viewLifecycleOwner, {
+        quizViewModel.isTimerEnd.observe(viewLifecycleOwner) {
             if (it == true) {
                 findNavController().navigate(QuizFragmentDirections.actionQuizFragmentToResultFragment(score, args.quizLevel))
             }
-        })
+        }
 
-        quizViewModel.optionsList.observe(viewLifecycleOwner, { optionList ->
+        quizViewModel.optionsList.observe(viewLifecycleOwner) { optionList ->
             optionList.forEach {
                 when (it) {
                     R.id.first_option -> {
@@ -112,7 +114,7 @@ class QuizFragment : Fragment(), View.OnClickListener {
                     }
                 }
             }
-        })
+        }
     }
 
     override fun onClick(view: View) {

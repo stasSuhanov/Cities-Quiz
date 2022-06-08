@@ -21,6 +21,10 @@ class ChoiceOfDifficultyLevelFragment : NavigationCheckingFragment(), View.OnCli
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setOnClickListener()
+    }
+
+    private fun setOnClickListener() {
         binding.easyLvlButton.setOnClickListener(this)
         binding.middleLvlButton.setOnClickListener(this)
         binding.hardLvlButton.setOnClickListener(this)

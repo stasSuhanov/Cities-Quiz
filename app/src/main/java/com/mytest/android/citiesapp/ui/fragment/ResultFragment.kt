@@ -6,9 +6,9 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.navigation.fragment.navArgs
 import com.mytest.android.citiesapp.databinding.FragmentResultBinding
+import com.mytest.android.citiesapp.ui.quiz.QuizDifficulty
 import com.mytest.android.citiesapp.utils.QuizPreferences.loadBestScore
 import com.mytest.android.citiesapp.utils.QuizPreferences.saveBestScore
-import com.mytest.android.citiesapp.ui.quiz.QuizDifficulty
 
 class ResultFragment : NavigationCheckingFragment() {
 
@@ -25,24 +25,31 @@ class ResultFragment : NavigationCheckingFragment() {
 
         val args: ResultFragmentArgs by navArgs()
 
+        setBestScore(args)
+        navigate()
+    }
+
+    private fun setBestScore(args: ResultFragmentArgs) {
         val bestScoreConstants = when (args.quizLevel) {
             QuizDifficulty.EASY.level -> BEST_EASY_LEVEL_SCORE
             QuizDifficulty.MIDDLE.level -> BEST_MIDDLE_LEVEL_SCORE
             QuizDifficulty.HARD.level -> BEST_HARD_LEVEL_SCORE
             else -> BEST_EASY_LEVEL_SCORE
         }
+
         val bestScore = loadBestScore(this.requireActivity(), bestScoreConstants)
-
         val score = args.score
-        binding.currentScoreAmount.text = args.score.toString()
 
+        binding.currentScoreAmount.text = args.score.toString()
         if (bestScore < score) {
             binding.bestScoreAmount.text = args.score.toString()
             saveBestScore(this.requireActivity(), score, bestScoreConstants)
         } else {
             binding.bestScoreAmount.text = bestScore.toString()
         }
+    }
 
+    private fun navigate() {
         binding.playAgainButton.setOnClickListener {
             navigate(ResultFragmentDirections.actionResultFragmentToChoiceOfDifficultyLevelFragment())
         }

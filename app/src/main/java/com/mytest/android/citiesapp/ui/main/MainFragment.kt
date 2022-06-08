@@ -15,7 +15,6 @@ import kotlinx.coroutines.launch
 class MainFragment : NavigationCheckingFragment() {
 
     private lateinit var binding: FragmentMainBinding
-
     private lateinit var mainViewModel: MainViewModel
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -28,7 +27,7 @@ class MainFragment : NavigationCheckingFragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         lifecycleScope.launch {
             val isLoad = mainViewModel.countStringsInDatabase()
-            if (isLoad == 0) {
+            if (isLoad == EMPTY_DATABASE) {
                 with(binding) {
                     searchButton.visibility = View.INVISIBLE
                     quizButton.visibility = View.INVISIBLE
@@ -57,6 +56,10 @@ class MainFragment : NavigationCheckingFragment() {
             }
         }
 
+        navigate()
+    }
+
+    private fun navigate() {
         binding.quizButton.setOnClickListener {
             navigate(MainFragmentDirections.actionMainFragmentToChoiceOfDifficultyLevelFragment())
         }
@@ -72,5 +75,9 @@ class MainFragment : NavigationCheckingFragment() {
         binding.aboutAppButton.setOnClickListener {
             navigate(MainFragmentDirections.actionMainFragmentToAboutAppFragment())
         }
+    }
+
+    companion object {
+        const val EMPTY_DATABASE = 0
     }
 }

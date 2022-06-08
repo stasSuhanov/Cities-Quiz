@@ -26,10 +26,11 @@ class ThemesFragment : Fragment(), View.OnClickListener {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        binding.defaultThemeButton.setOnClickListener(this)
-        binding.lightThemeButton.setOnClickListener(this)
-        binding.darkThemeButton.setOnClickListener(this)
+        setOnClickListener()
+        loadCurrentTheme()
+    }
 
+    private fun loadCurrentTheme() {
         currentTheme = QuizPreferences.loadAppTheme(requireContext())
         val currentThemeName = when (currentTheme) {
             MainActivity.DEFAULT_THEME -> DEFAULT_THEME_NAME
@@ -38,6 +39,12 @@ class ThemesFragment : Fragment(), View.OnClickListener {
             else -> DEFAULT_THEME_NAME
         }
         binding.currentTheme.text = getString(R.string.current_theme, currentThemeName)
+    }
+
+    private fun setOnClickListener() {
+        binding.defaultThemeButton.setOnClickListener(this)
+        binding.lightThemeButton.setOnClickListener(this)
+        binding.darkThemeButton.setOnClickListener(this)
     }
 
     override fun onClick(view: View) {

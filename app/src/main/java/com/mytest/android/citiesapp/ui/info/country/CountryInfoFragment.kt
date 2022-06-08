@@ -20,23 +20,18 @@ import com.mytest.android.citiesapp.utils.RoundPopulation
 class CountryInfoFragment : Fragment() {
 
     private val args: CountryInfoFragmentArgs by navArgs()
-
     private lateinit var binding: FragmentCountryInfoBinding
-
     private lateinit var countryInfoViewModel: CountryInfoViewModel
-
     private lateinit var adapter: CountryInfoFragmentAdapter
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         binding = FragmentCountryInfoBinding.inflate(inflater, container, false)
 
         adapter = CountryInfoFragmentAdapter()
-
         binding.recyclerViewCountryInfoFragment.adapter = adapter
         binding.recyclerViewCountryInfoFragment.layoutManager = LinearLayoutManager(requireContext())
 
         countryInfoViewModel = ViewModelProvider(this)[CountryInfoViewModel::class.java]
-
         return binding.root
     }
 
@@ -55,18 +50,18 @@ class CountryInfoFragment : Fragment() {
     }
 
     private fun observeViewModel() {
-        countryInfoViewModel.capital.observe(viewLifecycleOwner, {
+        countryInfoViewModel.capital.observe(viewLifecycleOwner) {
             binding.capitalName.text = it
             binding.capitalName.movementMethod = ScrollingMovementMethod()
-        })
-        countryInfoViewModel.citiesList.observe(viewLifecycleOwner, { cityEntity ->
+        }
+        countryInfoViewModel.citiesList.observe(viewLifecycleOwner) { cityEntity ->
             adapter.setItems(cityEntity)
             val population = cityEntity.sumOf { it.population ?: DEFAULT_POPULATION }
             binding.population.text = getString(
                 R.string.total_population,
                 NumberSeparator.addNumberSeparator(RoundPopulation().roundPopulation(population))
             )
-        })
+        }
     }
 
     companion object {

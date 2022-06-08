@@ -21,11 +21,9 @@ class CityInfoViewModel(application: Application) : AndroidViewModel(application
     private var isCityLoad = false
 
     fun findCityById(cityId: Int) {
-        if(!isCityLoad){
+        if (!isCityLoad) {
             isCityLoad = true
-            viewModelScope.launch {
-                _city.value = repository.findCityById(cityId)
-            }
+            viewModelScope.launch { _city.value = repository.findCityById(cityId) }
         }
     }
 }
