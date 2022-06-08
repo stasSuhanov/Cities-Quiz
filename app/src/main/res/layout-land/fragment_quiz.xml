@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?pageBackground"
+    tools:context=".ui.quiz.QuizFragment">
+
+    <View
+        android:id="@+id/background_view"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/background_view_size"
+        android:layout_margin="@dimen/layout_margin_10"
+        android:background="@drawable/background_for_text_view"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/question"
+        style="@style/TextStyleItem"
+        android:layout_width="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/background_view"
+        app:layout_constraintEnd_toEndOf="@+id/background_view"
+        app:layout_constraintStart_toStartOf="@+id/background_view"
+        app:layout_constraintTop_toTopOf="@id/background_view"
+        tools:text="Which city is the capital of Belarus?" />
+
+    <ImageView
+        android:id="@+id/timer_image"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/layout_margin_10"
+        android:layout_marginTop="@dimen/layout_margin_10"
+        android:src="@drawable/ic_timer"
+        app:layout_constraintStart_toStartOf="@id/background_view"
+        app:layout_constraintTop_toTopOf="@id/background_view" />
+
+    <TextView
+        android:id="@+id/skip_points"
+        style="@style/TextStyleItem"
+        android:layout_marginTop="@dimen/layout_margin_10"
+        android:layout_marginBottom="@dimen/layout_margin_10"
+        android:fontFamily="@font/rubik_medium"
+        android:text="@string/skip"
+        app:layout_constraintBottom_toBottomOf="@+id/background_view"
+        app:layout_constraintStart_toStartOf="@+id/background_view" />
+
+    <TextView
+        android:id="@+id/skip_points_amount"
+        style="@style/TextStyleItem"
+        android:layout_marginTop="@dimen/layout_margin_10"
+        android:layout_marginBottom="@dimen/layout_margin_10"
+        android:fontFamily="@font/rubik_medium"
+        app:layout_constraintBottom_toBottomOf="@+id/background_view"
+        app:layout_constraintStart_toEndOf="@+id/skip_points"
+        tools:text="3" />
+
+    <TextView
+        android:id="@+id/timer"
+        style="@style/TextStyleItem"
+        android:layout_marginTop="@dimen/layout_margin_10"
+        android:fontFamily="@font/rubik_medium"
+        app:layout_constraintStart_toEndOf="@+id/timer_image"
+        app:layout_constraintTop_toTopOf="@id/background_view"
+        tools:text="45" />
+
+    <TextView
+        android:id="@+id/current_score"
+        style="@style/TextStyleItem"
+        android:layout_marginTop="@dimen/layout_margin_10"
+        android:layout_marginEnd="@dimen/layout_margin_60"
+        android:text="@string/current_score"
+        app:layout_constraintEnd_toEndOf="@+id/background_view"
+        app:layout_constraintTop_toTopOf="@id/background_view" />
+
+    <TextView
+        android:id="@+id/current_score_amount"
+        style="@style/TextStyleItem"
+        android:layout_marginTop="@dimen/layout_margin_10"
+        android:layout_marginEnd="@dimen/layout_margin_10"
+        app:layout_constraintEnd_toEndOf="@id/background_view"
+        app:layout_constraintTop_toTopOf="@id/background_view"
+        tools:text="200" />
+
+    <TextView
+        android:id="@+id/first_option"
+        style="@style/TextStyleForOptionLand"
+        app:layout_constraintEnd_toStartOf="@id/second_option"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/background_view"
+        tools:text="Minsk" />
+
+    <TextView
+        android:id="@+id/second_option"
+        style="@style/TextStyleForOptionLand"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/first_option"
+        app:layout_constraintTop_toBottomOf="@id/background_view"
+        tools:text="Moscow" />
+
+    <TextView
+        android:id="@+id/third_option"
+        style="@style/TextStyleForOptionLand"
+        app:layout_constraintBottom_toBottomOf="@id/fourth_option"
+        app:layout_constraintEnd_toStartOf="@id/fourth_option"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/first_option"
+        tools:text="Kiev" />
+
+    <TextView
+        android:id="@+id/fourth_option"
+        style="@style/TextStyleForOptionLand"
+        app:layout_constraintBottom_toBottomOf="@id/third_option"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/third_option"
+        app:layout_constraintTop_toBottomOf="@id/second_option"
+        tools:text="New York City" />
+
+    <Button
+        android:id="@+id/skip_button"
+        style="@style/ButtonStyle"
+        android:layout_marginTop="@dimen/layout_margin_10"
+        android:text="@string/skip_question"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/fourth_option" />
+</androidx.constraintlayout.widget.ConstraintLayout>

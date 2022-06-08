@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?pageBackground"
+    tools:context="ui.fragment.ChoiceOfDifficultyLevelFragment">
+
+    <TextView
+        android:id="@+id/quiz_name"
+        style="@style/HeadTextViewStyle"
+        android:text="@string/choose_lvl"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/easy_lvl_button"
+        style="@style/ButtonStyle"
+        android:layout_marginTop="@dimen/layout_margin_20"
+        android:text="@string/easy_lvl"
+        app:layout_constraintBottom_toTopOf="@+id/middle_lvl_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/quiz_name" />
+
+    <Button
+        android:id="@+id/middle_lvl_button"
+        style="@style/ButtonStyle"
+        android:layout_marginTop="@dimen/layout_margin_20"
+        android:text="@string/middle_lvl"
+        app:layout_constraintBottom_toTopOf="@id/hard_lvl_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/easy_lvl_button" />
+
+    <Button
+        android:id="@+id/hard_lvl_button"
+        style="@style/ButtonStyle"
+        android:layout_marginTop="@dimen/layout_margin_20"
+        android:layout_marginBottom="@dimen/layout_margin_60"
+        android:text="@string/hard_lvl"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/middle_lvl_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>

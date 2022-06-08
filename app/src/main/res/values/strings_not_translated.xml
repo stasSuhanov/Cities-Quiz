@@ -1,0 +1,8 @@
+<resources>
+    <string name="convert_time" translatable="false">%s:%s</string>
+    <string name="total_population" translatable="false">%s+</string>
+    <string name="cities_flag_link" translatable="false"><a href="https://flagpedia.net/download/api">Flagpedia</a></string>
+    <string name="cities_info_file_link" translatable="false"><a href="https://simplemaps.com/">Simplemaps</a></string>
+    <string name="bitbucket_link" translatable="false"><a href="https://bitbucket.effective-soft.com/projects/ES272X5/repos/cities/browse">by Stas Suhanov</a></string>
+    <string name="app_name" translatable="false">Cities Quiz</string>
+</resources>

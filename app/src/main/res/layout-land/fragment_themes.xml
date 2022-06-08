@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?pageBackground"
+    android:gravity="center">
+
+    <TextView
+        android:id="@+id/themes_header"
+        style="@style/TextStyleThemesAppHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_margin_10"
+        android:gravity="center"
+        android:text="@string/themes_header"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/current_theme"
+        style="@style/TextStyleThemesAppHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_margin_10"
+        android:textSize="@dimen/text_size_25"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/themes_header"
+        tools:text="Current theme: Default" />
+
+    <Button
+        android:id="@+id/default_theme_button"
+        style="@style/ButtonStyle"
+        android:text="@string/default_theme_button"
+        app:icon="@drawable/ic_default_theme"
+        app:layout_constraintBottom_toTopOf="@id/dark_theme_button"
+        app:layout_constraintEnd_toStartOf="@+id/light_theme_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/current_theme" />
+
+    <Button
+        android:id="@+id/light_theme_button"
+        style="@style/ButtonStyle"
+        android:text="@string/light_theme_button"
+        app:icon="@drawable/ic_light_theme"
+        app:layout_constraintBottom_toBottomOf="@id/default_theme_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/default_theme_button" />
+
+    <Button
+        android:id="@+id/dark_theme_button"
+        style="@style/ButtonStyle"
+        android:layout_marginBottom="@dimen/layout_margin_20"
+        android:text="@string/dark_theme_button"
+        app:icon="@drawable/ic_dark_theme"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/default_theme_button" />
+</androidx.constraintlayout.widget.ConstraintLayout>

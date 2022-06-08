@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?pageBackground"
+    tools:context=".ui.fragment.AboutAppFragment">
+
+    <TextView
+        android:id="@+id/app_name"
+        style="@style/TextStyleItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_margin_20"
+        android:text="@string/app_name"
+        android:textSize="@dimen/text_size_35"
+        app:layout_constraintStart_toEndOf="@id/image_app_summary"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/telegram_link"
+        style="@style/TextStyleItem"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/bitbucket_link"
+        android:textSize="@dimen/text_size_13"
+        app:layout_constraintStart_toEndOf="@id/image_app_summary"
+        app:layout_constraintTop_toBottomOf="@id/app_name" />
+
+    <ImageView
+        android:id="@+id/image_app_summary"
+        style="@style/ImageStyle"
+        android:src="@drawable/ic_about_app"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/telegram_link" />
+
+    <TextView
+        android:id="@+id/app_summary"
+        style="@style/TextStyleAboutAppHead"
+        android:text="@string/app_summary"
+        app:layout_constraintStart_toEndOf="@id/image_app_summary"
+        app:layout_constraintTop_toBottomOf="@id/telegram_link" />
+
+    <TextView
+        android:id="@+id/app_summary_text"
+        style="@style/TextStyleAboutAppDescription"
+        android:layout_width="0dp"
+        android:layout_marginEnd="@dimen/layout_margin_20"
+        android:text="@string/app_summary_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/image_app_summary"
+        app:layout_constraintTop_toBottomOf="@id/app_summary" />
+
+    <ImageView
+        android:id="@+id/image_data_sources"
+        style="@style/ImageStyle"
+        android:src="@drawable/ic_data_sources"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/app_summary_text" />
+
+    <TextView
+        android:id="@+id/data_sources"
+        style="@style/TextStyleAboutAppHead"
+        android:text="@string/data_sources"
+        app:layout_constraintStart_toEndOf="@+id/image_data_sources"
+        app:layout_constraintTop_toBottomOf="@id/app_summary_text" />
+
+    <TextView
+        android:id="@+id/cities_info_file"
+        style="@style/TextStyleAboutAppDescription"
+        android:text="@string/cities_info_file"
+        app:layout_constraintStart_toEndOf="@id/image_data_sources"
+        app:layout_constraintTop_toBottomOf="@id/data_sources" />
+
+    <TextView
+        android:id="@+id/cities_info_file_link"
+        style="@style/TextStyleAboutAppDescription"
+        android:layout_marginStart="@dimen/layout_margin_5"
+        android:text="@string/cities_info_file_link"
+        app:layout_constraintStart_toEndOf="@id/cities_info_file"
+        app:layout_constraintTop_toBottomOf="@id/data_sources" />
+
+    <TextView
+        android:id="@+id/cities_flags"
+        style="@style/TextStyleAboutAppDescription"
+        android:text="@string/cities_flags"
+        app:layout_constraintStart_toEndOf="@id/image_data_sources"
+        app:layout_constraintTop_toBottomOf="@id/cities_info_file" />
+
+    <TextView
+        android:id="@+id/cities_flags_link"
+        style="@style/TextStyleAboutAppDescription"
+        android:layout_marginStart="@dimen/layout_margin_5"
+        android:text="@string/cities_flag_link"
+        app:layout_constraintStart_toEndOf="@id/cities_flags"
+        app:layout_constraintTop_toBottomOf="@id/cities_info_file_link" />
+
+    <ImageView
+        android:id="@+id/image_frameworks"
+        style="@style/ImageStyle"
+        android:src="@drawable/ic_frameworks"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cities_flags_link" />
+
+    <TextView
+        android:id="@+id/frameworks"
+        style="@style/TextStyleAboutAppHead"
+        android:text="@string/frameworks"
+        app:layout_constraintStart_toEndOf="@+id/image_frameworks"
+        app:layout_constraintTop_toBottomOf="@id/cities_flags_link" />
+
+    <TextView
+        style="@style/TextStyleAboutAppDescription"
+        android:layout_width="0dp"
+        android:layout_marginEnd="@dimen/layout_margin_20"
+        android:text="@string/frameworks_list"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/image_frameworks"
+        app:layout_constraintTop_toBottomOf="@id/frameworks" />
+</androidx.constraintlayout.widget.ConstraintLayout>

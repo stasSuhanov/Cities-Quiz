@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?pageBackground"
+    tools:context=".ui.info.city.CityInfoFragment">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        style="@style/CardViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/card_view_map"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/layout_margin_10"
+            android:layout_marginBottom="@dimen/layout_margin_10">
+
+            <TextView
+                android:id="@+id/country"
+                style="@style/TextViewCityInfoStyle"
+                android:text="@string/country"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/country_flag" />
+
+            <TextView
+                android:id="@+id/country_name"
+                style="@style/TextViewCityInfoStyle"
+                app:layout_constraintStart_toEndOf="@+id/country"
+                app:layout_constraintTop_toBottomOf="@id/country_flag"
+                tools:text="Belarus" />
+
+            <View
+                android:id="@+id/view_first_line"
+                style="@style/ViewStyle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/country_name" />
+
+            <TextView
+                android:id="@+id/city"
+                style="@style/TextViewCityInfoStyle"
+                android:text="@string/city"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_first_line" />
+
+            <TextView
+                android:id="@+id/city_name"
+                style="@style/TextViewCityInfoStyle"
+                android:maxLines="1"
+                android:scrollbars="vertical"
+                app:layout_constraintStart_toEndOf="@+id/city"
+                app:layout_constraintTop_toBottomOf="@+id/view_first_line"
+                tools:text="Minsk" />
+
+            <View
+                android:id="@+id/view_second_line"
+                style="@style/ViewStyle"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/city" />
+
+            <TextView
+                android:id="@+id/population_name"
+                style="@style/TextViewCityInfoStyle"
+                android:text="@string/population"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/view_second_line" />
+
+            <TextView
+                android:id="@+id/population"
+                style="@style/TextViewCityInfoStyle"
+                app:layout_constraintStart_toEndOf="@+id/population_name"
+                app:layout_constraintTop_toBottomOf="@+id/view_second_line"
+                tools:text="777" />
+
+            <ImageView
+                android:id="@+id/country_flag"
+                android:layout_width="@dimen/flag_size_100"
+                android:layout_height="@dimen/flag_size_100"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view_map"
+        style="@style/CardViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/card_view"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <fragment
+            android:id="@+id/google_map"
+            android:name="com.google.android.gms.maps.SupportMapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </androidx.cardview.widget.CardView>
+</androidx.constraintlayout.widget.ConstraintLayout>

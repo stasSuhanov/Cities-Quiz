@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?pageBackground"
+    android:orientation="vertical"
+    tools:context=".ui.info.country.CountryInfoFragment">
+
+    <View
+        android:id="@+id/background_view"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_marginStart="@dimen/layout_margin_10"
+        android:layout_marginTop="@dimen/layout_margin_10"
+        android:layout_marginEnd="@dimen/layout_margin_10"
+        android:layout_marginBottom="@dimen/layout_margin_10"
+        android:background="@drawable/background_for_country_info_text_view"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/recycler_view_country_info_fragment"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/country_name_info"
+        style="@style/TextViewCountryInfoStyle"
+        android:textSize="@dimen/text_size_35"
+        app:layout_constraintStart_toStartOf="@+id/background_view"
+        app:layout_constraintTop_toTopOf="@+id/background_view"
+        tools:text="Belarus" />
+
+    <TextView
+        android:id="@+id/capital_name"
+        style="@style/TextViewCountryInfoStyle"
+        android:layout_marginTop="0dp"
+        android:maxLines="1"
+        app:layout_constraintStart_toStartOf="@+id/background_view"
+        app:layout_constraintTop_toBottomOf="@+id/country_name_info"
+        tools:text="Minsk" />
+
+    <TextView
+        android:id="@+id/population"
+        style="@style/TextViewCountryInfoStyle"
+        android:layout_marginTop="0dp"
+        app:layout_constraintStart_toStartOf="@+id/background_view"
+        app:layout_constraintTop_toBottomOf="@+id/capital_name"
+        tools:text="12313312" />
+
+    <ImageView
+        android:id="@+id/country_flag"
+        android:layout_width="@dimen/flag_size_75"
+        android:layout_height="@dimen/flag_size_75"
+        android:layout_marginTop="@dimen/layout_margin_20"
+        android:layout_marginEnd="@dimen/layout_margin_10"
+        app:layout_constraintEnd_toEndOf="@+id/background_view"
+        app:layout_constraintTop_toTopOf="@+id/background_view" />
+
+    <ImageView
+        android:id="@+id/city_image"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/image_size_150"
+        android:layout_marginStart="@dimen/layout_margin_20"
+        android:layout_marginTop="@dimen/layout_margin_10"
+        android:layout_marginEnd="@dimen/layout_margin_20"
+        android:layout_marginBottom="@dimen/layout_margin_10"
+        app:layout_constraintBottom_toBottomOf="@+id/background_view"
+        app:layout_constraintEnd_toEndOf="@+id/background_view"
+        app:layout_constraintStart_toStartOf="@+id/background_view"
+        app:layout_constraintTop_toBottomOf="@+id/population" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view_country_info_fragment"
+        style="@style/RecyclerViewStyle"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginEnd="@dimen/layout_margin_10"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/background_view"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>

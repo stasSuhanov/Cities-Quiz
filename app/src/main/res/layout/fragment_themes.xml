@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="?pageBackground"
+    android:gravity="center"
+    android:orientation="vertical"
+    tools:context=".ui.fragment.ThemesFragment">
+
+    <TextView
+        android:id="@+id/themes_header"
+        style="@style/TextStyleThemesAppHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/themes_header" />
+
+    <TextView
+        android:id="@+id/current_theme"
+        style="@style/TextStyleThemesAppHead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/layout_margin_10"
+        android:textSize="@dimen/text_size_25"
+        tools:text="Current theme: Default" />
+
+    <Button
+        android:id="@+id/default_theme_button"
+        style="@style/ButtonStyle"
+        android:text="@string/default_theme_button"
+        app:icon="@drawable/ic_default_theme" />
+
+    <Button
+        android:id="@+id/light_theme_button"
+        style="@style/ButtonStyle"
+        android:text="@string/light_theme_button"
+        app:icon="@drawable/ic_light_theme" />
+
+    <Button
+        android:id="@+id/dark_theme_button"
+        style="@style/ButtonStyle"
+        android:text="@string/dark_theme_button"
+        app:icon="@drawable/ic_dark_theme" />
+</LinearLayout>
